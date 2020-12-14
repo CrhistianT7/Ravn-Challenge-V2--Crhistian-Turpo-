@@ -59,7 +59,7 @@ Now I'm showing you some screenshot of the results:
 ![alt text](https://github.com/CrhistianT7/Ravn-Challenge-V2--Crhistian-Turpo-/blob/main/figures/react-window.png)
 
 
-**Technologies used
+## Technologies used
 - React JS
 - Apollo Client
 - GraphQL
