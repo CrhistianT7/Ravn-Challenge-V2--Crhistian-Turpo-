@@ -1,0 +1,21 @@
+.infoCell {
+    width: 890px;
+    height: 49px;
+    position: relative;
+    margin-left: 155px;
+    color: #828282;
+    font-weight: bold;
+}
+
+.text{
+    color: #333333;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+}
+
+.textAlign {
+    padding-top: 10px;
+    padding-left: 16px;
+    border-bottom: 1px solid #828282;
+}

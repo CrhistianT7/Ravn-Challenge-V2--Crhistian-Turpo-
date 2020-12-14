@@ -1,0 +1,22 @@
+.errorCell {
+    width: 350px;
+    height: 52px;
+    left: 0px;
+    top: 52px;
+}
+
+.textStyle {
+    width: 151px;
+    height: 20px;
+    position: absolute;
+    font-size: 17px;
+    color: #ec5757;
+    font-weight: bold;
+    font-size: 16px;
+    font-style: normal;
+    padding-top: 16px;
+    padding-left: 100px;
+    padding-right: 99px;
+    padding-bottom: 16px;
+    align-content: center;
+}

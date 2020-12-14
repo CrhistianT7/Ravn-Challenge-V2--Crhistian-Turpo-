@@ -1,0 +1,13 @@
+.tableSectionHeader {
+    vertical-align: bottom;
+    width: 890px;
+    height: 60px;
+    margin-left: 155px;
+}
+
+.title{
+    font-weight: bold;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-top: 32px;
+}

@@ -1,0 +1,18 @@
+.loadingCell {
+    width: 350px;
+    height: 69px;
+    position: absolute;
+}
+
+.loadingIndicator {
+    width: 97px;
+    height: 24px;
+    padding-top: 16px;
+    padding-left: 126px;
+    padding-right: 126px;
+    color: #828282;
+    position: absolute;
+    vertical-align: center;
+    font-size: 17px;
+    font-weight: bold;
+}
