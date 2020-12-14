@@ -39,21 +39,27 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-#Project Description
+## Project Description
 
 This is a React (JS) web page to query Start Wars characters and their information.
 For this purpose we use Apollo Client and Graph QL with the conection to [this](https://swapi-graphql.netlify.app/.netlify/functions/index) end point.
 
-#Results
+## Results
 
 Now I'm showing you some screenshot of the results:
+
 ![alt text](https://github.com/CrhistianT7/Ravn-Challenge-V2--Crhistian-Turpo-/blob/main/figures/loadingData.png)
+
 ![alt text](https://github.com/CrhistianT7/Ravn-Challenge-V2--Crhistian-Turpo-/blob/main/figures/failed2Load.png)
+
 ![alt text](https://github.com/CrhistianT7/Ravn-Challenge-V2--Crhistian-Turpo-/blob/main/figures/usersLoaded.png)
+
 ![alt text](https://github.com/CrhistianT7/Ravn-Challenge-V2--Crhistian-Turpo-/blob/main/figures/extraInfo.png)
+
 ![alt text](https://github.com/CrhistianT7/Ravn-Challenge-V2--Crhistian-Turpo-/blob/main/figures/react-window.png)
 
-#Technologies used
+
+**Technologies used
 - React JS
 - Apollo Client
 - GraphQL
