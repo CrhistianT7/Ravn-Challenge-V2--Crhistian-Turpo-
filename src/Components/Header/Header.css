@@ -1,5 +1,6 @@
 .container {
-    width: 1440px;
+    /* width: 1440px; */
+    width: 100vw;
     height: 52px;
     background-color: #121212;
     box-shadow: 25%;

@@ -75,7 +75,7 @@ const PeopleList = (props) => {
         
         //** Row for the React-window */
         const Row = ({index, key, style}) =>(
-          <div>
+          <div style={style}>
             {people}
           </div>
         )
@@ -85,10 +85,10 @@ const PeopleList = (props) => {
             <div className={styles.peopleList} key>
                 {/* {people} */}
                 <List
-                  width={350}
                   height={848}
-                  itemCount={100}
-                  itemSize={35}
+                  itemCount={1}
+                  itemSize={80}
+                  width={350}
                 >
                   {Row}
                 </List>
