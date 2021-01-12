@@ -3,6 +3,7 @@
     height: 848px;
     background-color: #ffffff;
     box-shadow: 1px 0px 0px rgba(0,0, 0, 0.15);
+    overflow: auto;
 }
 
 .personCell {
@@ -20,7 +21,7 @@
 .section {
     display: flex;
     width: 1440px;
-    height: 848px;
+    height: 848px;;
 }
 
 .personName {

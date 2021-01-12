@@ -9,14 +9,14 @@
 }
 
 .text { 
-    width: 191px;
+    width: 220px;
     height: 20px;
     color: #f2f2f2;
     padding-top: 16px;
     padding-left: 33px;
     padding-bottom: 16px;
     font-size: 17px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: sans-serif;
     text-align: left;
     vertical-align: center;
     letter-spacing: 1.25%;

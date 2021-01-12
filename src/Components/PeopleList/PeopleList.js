@@ -1,17 +1,21 @@
 import styles from './PeopleList.css'
 import {useQuery, gql} from '@apollo/client'
+import { offsetLimitPagination } from "@apollo/client/utilities";
 import React, {useState} from 'react';
 
 import LoadingCell from './LoadingCell'
 import ErrorCell from './ErrorCell'
 import PeopleInformation from '../PeopleInformation/PeopleInformation'
-// import InfiniteScroll from 'react-infinite-scroll-component';
-import { FixedSizeList as List } from "react-window";
+// import { FixedSizeList as List } from "react-window";
 
 const STAR_WARS_PEOPLE_QUERY = gql`
-{
-    allPeople{
-      people{
+query ($endCursor: String){
+  allPeople (first: 5, after: $endCursor){
+    pageInfo{
+      endCursor
+    }
+    edges{
+      node{
         id
         name
         species {
@@ -35,63 +39,74 @@ const STAR_WARS_PEOPLE_QUERY = gql`
       }
     }
   }
+}
 `;
 
-const missingData = 'm-d' // m-d stands for missing data
+const missingData = 'm-d' /** m-d stands for missing data */
 
-const PeopleList = (props) => {
+const PeopleList = () => {
 
       const { 
         loading: loadingPeople, 
         error: errorPeople, 
-        data: dataPeople } = useQuery(STAR_WARS_PEOPLE_QUERY);
+        data: dataPeople,
+        fetchMore: fetchMore} = useQuery(STAR_WARS_PEOPLE_QUERY, {variables: {after: null}});
 
-      //** Here we load information of a person reciving the index in the list for that */
       const [personInformation, setPersonInformation] = useState([]);
 
       const showPersonInformation = (personIndex) => {
-        const personByIndex = dataPeople.allPeople['people'][personIndex];
+        const personByIndex = dataPeople.allPeople.edges[personIndex].node;
         setPersonInformation(
             <span>
                 <PeopleInformation data = {personByIndex}/>
             </span>)
       }
 
-      //** Control for Loading and Error on the data */
       if (loadingPeople) return <div className={styles.peopleList}><LoadingCell/></div>;
       if (errorPeople) return <div className={styles.peopleList}><ErrorCell/></div>;
     
-      //** Setting for PersonCell */
-      //** There is a check out for missin values */
-      const people = dataPeople.allPeople['people'].map((person,index) => (
-        <div key={person.id} className={styles.personCell}>
+      const people = dataPeople.allPeople.edges.map((person,index) => (
+        <div key={person.node.id} className={styles.personCell}>
             <div className={styles.personCellAtributes}>
-              <div className={styles.personName}>{person.name != null ? person.name : missingData}</div>
-              <span className={styles.personDescription}>{person.species != null? person.species.name : missingData} from {person.homeworld.name}</span>
+              <div className={styles.personName}>{person.node.name != null ? person.node.name : missingData}</div>
+              <span className={styles.personDescription}>{person.node.species != null? person.node.species.name : missingData} from { person.node.homeworld.name}</span>
             </div>
             <button className={styles.button}  onClick={() => showPersonInformation(index)}> &gt; </button>
         </div>
         ));
         
         //** Row for the React-window */
-        const Row = ({index, key, style}) =>(
-          <div style={style}>
-            {people}
-          </div>
-        )
+        // const Row = ({index, key, style}) =>(
+        //   <div style={style}>
+        //     {people}
+        //   </div>
+        // )
 
     return(
         <section className={styles.section}>
-            <div className={styles.peopleList} key>
-                {/* {people} */}
-                <List
+            <div className={styles.peopleList}>
+                {people}
+                {/* <List
                   height={848}
                   itemCount={1}
                   itemSize={80}
                   width={350}
                 >
                   {Row}
-                </List>
+                </List> */}
+                <button onClick={() => {
+                  const {endCursor} = dataPeople.allPeople.pageInfo;
+                  fetchMore({
+                    variables: { endCursor: endCursor},
+                    updateQuery: (prevResult, {fetchMoreResult}) => {
+                      fetchMoreResult.allPeople.edges = [
+                        ...prevResult.allPeople.edges,
+                        ...fetchMoreResult.allPeople.edges
+                      ];
+                      return fetchMoreResult;
+                    }
+                  })
+                }}>Load more</button>
             </div>
             {personInformation}
         </section>
